@@ -1,0 +1,107 @@
+#!/bin/bash
+black='\e[0;30m'
+red='\e[0;31m'
+green='\e[0;32m'
+brown='\e[0;33m'
+blue='\e[0;34m'
+purple='\e[0;35m'
+cyan='\e[0;36m'
+lightgray='\e[0;37m'
+
+clear
+
+cowsay -f stegosaurus "WELCOME TO RIKO VPS" | lolcat
+echo "====================================================================" | lolcat
+echo " Telegram        @rdaloves                 " | lolcat
+echo " Grub Telegram   @t.me/rikosshgroup                " | lolcat
+echo " Facebook        facebook.com/rikodaloves        " | lolcat
+echo "====================================================================" | lolcat
+echo "                 POWERED BY RIKO DALOVES" | lolcat                    # "
+echo "====================================================================" | lolcat
+echo ""
+echo "1.) Membuat Akun SSH ( ADD )" | lolcat
+echo "2.) Mengganti Password Akun SSH ( CGPW )" | lolcat
+echo "3.) Menghapus Akun SSH ( DELETE )" | lolcat
+echo "4.) Cek User SSH yang Aktif ( ON )" | lolcat
+echo "5.) Cek Masa Aktif User SSH ( EXPIRE USER )" | lolcat
+echo "6.) Mengecek Port Aktif di Server VPS" | lolcat
+echo "7.) Mengganti Port OpenSSH" | lolcat
+echo "8.) Mengganti Port Dropbear" | lolcat
+echo "9.) Restart OpenSSH & Dropbear" | lolcat
+echo "10.) Mengganti Password Server ( PASSWORD )" | lolcat
+echo "11.) Cek Ram Usage ( PENGGUNAAN RAM )" | lolcat
+echo "12.) Restart VPS ( REBOOT )" | lolcat
+echo "13.) Test Speed Server ( speedtest.py --share )" | lolcat
+echo "14.) Membuat Trial Akun SSH ( Trial )" | lolcat
+echo ""
+echo "(X) untuk Keluar dari menu" | lolcat
+
+echo -n "Masukan Pilihan Anda : " 
+read tool
+
+if [ $tool = 1 ]
+then
+/etc/a/script/./usernew
+fi
+if [ $tool = 2 ]
+then
+/etc/a/script/./pass
+fi
+if [ $tool = 3 ]
+then
+/etc/a/script/./deluser
+fi
+if [ $tool = 4 ]
+then
+/etc/a/script/./userlogin
+fi
+if [ $tool = 5 ]
+then
+/etc/a/script/./userexp
+fi
+if [ $tool = 6 ]
+then
+netstat -tulpn
+fi
+if [ $tool = 7 ]
+then
+nano /etc/ssh/sshd_config
+fi
+if [ $tool = 8 ]
+then
+nano /etc/default/dropbear
+fi
+if [ $tool = 9 ]
+then
+/etc/init.d/ssh restart && /etc/init.d/dropbear restart
+fi
+if [ $tool = 10 ]
+then
+passwd
+fi
+if [ $tool = 11 ]
+then
+/etc/a/script/./ps_mem.py
+fi
+if [ $tool = 12 ]
+then
+reboot -p
+fi
+if [ $tool = 13 ]
+then
+/etc/a/script/./speedtest.py --share
+fi
+if [ $tool = 14 ]
+then
+/etc/a/script/./trial
+fi
+
+if [ $tool = x ]
+then
+clear
+echo "
+	Bye!
+"
+exit
+exit
+fi

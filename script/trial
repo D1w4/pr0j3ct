@@ -1,0 +1,18 @@
+#!/bin/bash
+ip="$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')"
+
+Login=trial-`</dev/urandom tr -dc X-Z0-9 | head -c4`
+masaaktif="1"
+Pass=`</dev/urandom tr -dc a-f0-9 | head -c9`
+#IP=`dig +short myip.opendns.com @resolver1.opendns.com`
+useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
+echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
+echo -e "Host: ${ip}"  
+echo -e "Port OpenSSH: 22,143"
+echo -e "Port Dropbear: 80, 443"
+echo -e "Port Squid: 3128, 8000, 8080"
+echo -e "Username: $Login "
+echo -e "Password: $Pass\n"
+echo -e ""
+echo -e "Script by \e[1;33;44m ~wiw@hooplateam~ \e[0m"
+

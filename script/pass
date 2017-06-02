@@ -1,0 +1,17 @@
+#!/bin/bash
+read -p "Username : " Login
+read -p "Password : " Pass
+
+IP=`dig +short myip.opendns.com @resolver1.opendns.com`
+passwd $Login
+exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
+echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
+echo -e ""
+echo -e "Informasi SSH"
+echo -e "=========-account-=========="
+echo -e "Username     : $Login "
+echo -e "Password Baru: $Pass"
+echo -e "-----------------------------"
+echo -e "==========================="
+echo -e "Script by \e[1;33;44m ~wiw@hooplateam~ \e[0m"
+
